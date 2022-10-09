@@ -1,0 +1,7 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 2022-10-10
+
+- Added filtration that allows you to select what science packs can be used for infinite technologies
+- Added support for science packs that have "icons" property instead of "icon"
+- Added support for science packs which internal name ends with '-%d'
