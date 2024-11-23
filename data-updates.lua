@@ -1,6 +1,7 @@
 -- mod variables
 local tools = data.raw.tool;
 local packs = {} -- contains ingredients for all packs technology
+local tech_prerequisites = {} -- contains technology prerequisites for all pack technology
 local formula = "";
 
 -- settings data
@@ -43,7 +44,12 @@ for k, v in pairs(tools) do
 		if each_pack then
 			local technology = {};
 			technology.name = "Ket-IT-" .. k;
-			technology.localised_name = v.name;
+			if v.localised_name ~= nil then
+				technology.localised_name = v.localised_name;
+			else
+				technology.localised_name = v.name;
+			end
+			technology.localised_name = technology.localised_name .. "infinite"
 			technology.type = "technology";
 			if v.icon ~= nil then
 				technology.icon = v.icon;
@@ -66,10 +72,14 @@ for k, v in pairs(tools) do
 				},
 				time = research_time
 			}
+			if data.raw["technology"][k] ~= nil then
+				technology.prerequisites = {k}
+				table.insert(tech_prerequisites, k)
+			end
 			-- if technology name ends with "-digits" then replace '-' to ' '
 			if technology.name:find('(.+)-(%d+)$') then
 				local p1, p2 = technology.name:match('(.+)-(%d+)$')
-				technology.name = p1 .. " " .. p2;
+				technology.name = p1 .. "_" .. p2;
 			end
 			data:extend{technology};
 		end
@@ -92,7 +102,8 @@ if all_packs then
 				count_formula = formula,
 				ingredients = packs,
 				time = research_time
-			}
+			},
+			prerequisites = tech_prerequisites
 		}
 	}
 end
