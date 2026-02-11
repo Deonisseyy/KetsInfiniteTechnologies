@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.3
+Date: 2026-02-11
+
+- Fixed error when Enable technologies for each research pack is unchecked (https://mods.factorio.com/mod/KetsInfiniteTechnologies/discussion/6954ff7346c5c0e6708c28c4)
+- Fixed science pack technology name (Thanks to avh4 from github)
+---------------------------------------------------------------------------------------------------
 Version: 2.0.2
 Date: 2026-01-09
 

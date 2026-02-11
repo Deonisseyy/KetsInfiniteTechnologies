@@ -113,8 +113,6 @@ if all_packs then
 	}
 	labEntity = util.copy(data.raw["lab"]["lab"])
 	labEntity.name = "Lab-for-infinite-technology";
-	log(tech_prerequisites)
-	print(tech_prerequisites)
 	labEntity.inputs = tech_prerequisites;
 	data:extend({labEntity})
 end
