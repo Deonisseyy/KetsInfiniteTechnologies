@@ -46,12 +46,11 @@ for k, v in pairs(tools) do
 		if each_pack then
 			local technology = {};
 			technology.name = "Ket-IT-" .. k;
-			if v.localised_name ~= nil then
-				technology.localised_name = v.localised_name;
-			else
-				technology.localised_name = v.name;
+			local localised_name = v.localised_name;
+			if localised_name == nil then
+				localised_name = {"item-name." .. v.name};
 			end
-			technology.localised_name = technology.localised_name .. "infinite"
+			technology.localised_name = {"", localised_name, " infinite"};
 			technology.type = "technology";
 			if v.icon ~= nil then
 				technology.icon = v.icon;
